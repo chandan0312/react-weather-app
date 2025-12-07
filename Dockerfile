@@ -20,7 +20,7 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run build
 
 # Stage 2: Serve the built application with Nginx (or another web server)
-FROM nginx:alpine
+FROM nginx:latest
 
 # Copy the built React app from the builder stage
 COPY --from=builder /app/build /usr/share/nginx/html
@@ -29,4 +29,5 @@ COPY --from=builder /app/build /usr/share/nginx/html
 EXPOSE 80
 
 # Start Nginx
+
 CMD ["nginx", "-g", "daemon off;"]
