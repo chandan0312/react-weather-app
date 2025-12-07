@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
+# Set the NODE_OPTIONS environment variable for the build step
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 # Build the React application for production
 RUN npm run build
 
